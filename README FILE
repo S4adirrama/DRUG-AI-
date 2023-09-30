@@ -1,0 +1,8 @@
+to run an app use following command "streamlit run app.py"
+Requirements:
+streamlit
+langchain
+openai
+wikipedia
+chromeadb
+tiktoken 
