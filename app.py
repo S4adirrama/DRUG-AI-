@@ -1,6 +1,4 @@
-# Bring in deps
 import os 
-from apikey import apikey 
 
 import streamlit as st 
 from langchain.llms import OpenAI
@@ -9,21 +7,22 @@ from langchain.chains import LLMChain, SequentialChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper 
 
-os.environ['OPENAI_API_KEY'] = apikey
+apikey = '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'
+os.environ[apikey]
 
-# App framework
-st.title('🦜🔗 YouTube GPT Creator')
-prompt = st.text_input('Plug in your prompt here') 
+# App GUI
+st.title(' Drug AI 💊')
+prompt = st.text_input('Plug in your medicine here') 
 
 # Prompt templates
 title_template = PromptTemplate(
     input_variables = ['topic'], 
-    template='write me a youtube video title about {topic}'
+    template='write me a list of food that you should and should not eat while I take this medicine {topic}'
 )
 
 script_template = PromptTemplate(
     input_variables = ['title', 'wikipedia_research'], 
-    template='write me a youtube video script based on this title TITLE: {title} while leveraging this wikipedia reserch:{wikipedia_research} '
+    template='write me a diet for week using the list of food: {title} while leveraging this wikipedia reserch:{wikipedia_research} '
 )
 
 # Memory 
@@ -38,7 +37,7 @@ script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_ke
 
 wiki = WikipediaAPIWrapper()
 
-# Show stuff to the screen if there's a prompt
+# GUI Output
 if prompt: 
     title = title_chain.run(prompt)
     wiki_research = wiki.run(prompt) 
