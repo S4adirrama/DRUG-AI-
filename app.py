@@ -7,7 +7,7 @@ from langchain.chains import LLMChain, SequentialChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper 
 
-apikey = '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'
+apikey = 'YOUR_API_TOKEN'
 os.environ[apikey]
 
 # App GUI
