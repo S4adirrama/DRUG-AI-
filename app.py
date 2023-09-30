@@ -7,8 +7,8 @@ from langchain.chains import LLMChain, SequentialChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper 
 
-apikey = 'YOUR_API_TOKEN'
-os.environ[apikey]
+apikey = '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'
+os.environ['OPENAI_API_KEY'] = apikey
 
 # App GUI
 st.title(' Drug AI 💊')
